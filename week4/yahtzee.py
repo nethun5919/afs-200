@@ -1,38 +1,36 @@
 
 import random
 
-class dice: 
-    sides = [1,2,3,4,5,6,7,8,9]
-
-def __int__(self, sides = 6):
-    self.numOfSides = sides
-    self.currentSideUp= 1
+class Dice: 
+    sides = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅']
 
 
-def roll(self):
-    self.currentSideUp= random.randint(1,self.nomOfSides)
-    return self.numOfSides
+    def __init__(self, sides = 6):
+        self.numOfSides = sides
+        self.numValue = 1
 
-def getNumOfSides(self):
-    return self.numOfSides
 
-def getCurrentSideUp(self):
-    return self.currentSideUp
+    def roll(self):
+        self.numValue = random.randint(1,self.numOfSides)
+        return self.numValue
 
-def showDiceFace(self):
-    print(f'{dice.sides [self.getCurrentSideUp()]} {self.getCurrentSideUp()}', end= "")
+    def getnumOfSides(self):
+        return self.numOfSides
 
-def PlayYahtzee():
-    myDice = {dice(),dice(),dice(),dice(),dice(),dice()}
+    def getCurrentSideUp(self):
+        return self.numValue
+
+    def showDiceFace(self):
+        print(f'{Dice.sides [self.getCurrentSideUp()-1]} {self.getCurrentSideUp()}', end= "")
+
+def playYahtzee():
+    myDice = [Dice(),Dice(),Dice(),Dice(),Dice(),Dice()]
 
     for dice in myDice:
         dice.roll()
         dice.showDiceFace()
-
-
-yahtzee = all(dice.getCurrentSideUp() == myDice[0].getCurrentSideUp()for dice in myDice)
-
-if yahtzee:
-    print("\nYAHTZEE")
+    yahtzee = all(dice.getCurrentSideUp() == myDice[0].getCurrentSideUp()for dice in myDice)
+    if yahtzee:
+        print("\nYAHTZEE")
 
 playYahtzee()
